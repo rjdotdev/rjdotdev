@@ -1,7 +1,7 @@
 <!--
   github.com/rjdotdev · profile dossier
   Art + panels: assets/*.png (rendered by _src/build.py from live GitHub data)
-  Hero wordmark: animated PNG (APNG, loops; kinetic epithets by _src/kinetic.py).
+  Hero wordmark: animated GIF (loops; kinetic epithets by _src/kinetic.py).
   Swap in assets/alt/hero-*-solid.png for a full-ink wordmark. Motion also previews in preview.html.
   Heatmap: assets/contrib-*.svg (refreshed daily by .github/workflows/contrib.yml)
 -->
@@ -9,8 +9,8 @@
 <p align="center">
   <a href="https://github.com/rjdotdev">
     <picture>
-      <source media="(prefers-color-scheme: light)" srcset="./assets/hero-light.png#gh-light-mode-only">
-      <img src="./assets/hero-dark.png#gh-dark-mode-only" width="100%" alt="ACTUM · POWER · BEAUTY · GRACE · RUIN · DEMISE · VOID · rj · @rjdotdev · Suryaansh A. Jha (RJ). Building agentic tools - software that acts.">
+      <source media="(prefers-color-scheme: light)" srcset="./assets/hero-light.gif#gh-light-mode-only">
+      <img src="./assets/hero-dark.gif#gh-dark-mode-only" width="100%" alt="ACTUM · POWER · BEAUTY · GRACE · RUIN · DEMISE · VOID · rj · @rjdotdev · Suryaansh A. Jha (RJ). Building agentic tools - software that acts.">
     </picture>
   </a>
 </p>
