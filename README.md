@@ -3,7 +3,7 @@
   Art + panels: assets/*.png (rendered by _src/build.py from live GitHub data)
   Hero wordmark: animated PNG (APNG, loops; kinetic epithets by _src/kinetic.py).
   Swap in assets/alt/hero-*-solid.png for a full-ink wordmark. Motion also previews in preview.html.
-  Heatmap: assets/contrib-*.svg (refreshed daily by .github/workflows/contrib.yml)
+  Live panels and heatmap: refreshed daily by .github/workflows/contrib.yml
 -->
 
 <p align="center">

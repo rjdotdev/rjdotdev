@@ -1,5 +1,5 @@
-# Refreshes the contribution heatmap SVGs + stats.json from the live GitHub calendar once a day.
-# PNG panels (hero/fastfetch/cards) are rendered locally with `python3 _src/build.py`.
+# Refreshes the contribution heatmap and every PNG panel that carries live
+# totals (hero, fastfetch, public repo cards, footer) once a day.
 name: refresh-contrib
 on:
   schedule: [{ cron: "17 3 * * *" }]
@@ -10,10 +10,37 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: python3 _src/build.py --svg-only
-      - run: |
+      - name: Install Chrome and render libraries
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ca-certificates curl python3-venv fontconfig
+          curl -fsSL -o /tmp/chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y /tmp/chrome.deb
+          python3 -m venv /tmp/render-venv
+          /tmp/render-venv/bin/pip install --disable-pip-version-check pillow==13.0.0 numpy==2.5.4 scipy==1.18.1
+      - name: Render panels
+        run: /tmp/render-venv/bin/python _src/build.py
+      - name: Commit refreshed assets
+        run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/contrib-*.svg assets/contrib.json assets/stats.json
-          git diff --cached --quiet || git commit -m "chore: refresh contribution heatmap"
+          git add \
+            assets/contrib-dark.svg \
+            assets/contrib-light.svg \
+            assets/contrib.json \
+            assets/stats.json \
+            assets/avatar.png \
+            assets/hero-dark.png \
+            assets/hero-light.png \
+            assets/fastfetch-dark.png \
+            assets/fastfetch-light.png \
+            assets/footer-dark.png \
+            assets/footer-light.png \
+            assets/public-openclaw-dark.png \
+            assets/public-openclaw-light.png \
+            assets/public-openviking-dark.png \
+            assets/public-openviking-light.png \
+            assets/public-rakazo-dark.png \
+            assets/public-rakazo-light.png
+          git diff --cached --quiet || git commit -m "chore: refresh profile panels"
           git push

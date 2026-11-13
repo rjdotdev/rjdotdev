@@ -12,13 +12,23 @@ from its 210px display size to this panel's 136px):
            densest mid-word), cells in ink at alpha 0.24, skipped while mix < 0.02;
            box = word width*fit + 6 by 0.82*size, raised 0.11*size from the box centre.
 Output: one APNG (loops forever, single global palette), drawn at 2x."""
-import math, numpy as np
+import math, pathlib, numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 WORDS = ['ACTUM', 'POWER', 'BEAUTY', 'GRACE', 'RUIN', 'DEMISE', 'VOID']
 S = 2                                    # device scale of the hero render
 K = 136 / 210                            # reference 210px display -> 136px on this 900px panel
-FONT = '/usr/share/fonts/truetype/sand-box/google/Fraunces/Fraunces-VariableFont_SOFT,WONK,opsz,wght.ttf'
+def _fraunces():
+    root = pathlib.Path(__file__).resolve().parent / 'fonts'
+    candidates = [
+        root / 'Fraunces-Variable.ttf',
+        pathlib.Path('/usr/share/fonts/truetype/sand-box/google/Fraunces/Fraunces-VariableFont_SOFT,WONK,opsz,wght.ttf'),
+    ]
+    for path in candidates:
+        if path.is_file():
+            return str(path)
+    raise SystemExit('Fraunces variable font not found in _src/fonts')
+FONT = _fraunces()
 SIZE = round(210 * K * S)
 BOX = (136 * S, 36 * S, round(800 * K * S), round(180 * K * S))   # x, y, w, h of the epithet box (1x: 136,36 518x117)
 CELL = max(2, round(10 * K * S))

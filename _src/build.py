@@ -209,11 +209,48 @@ def heatmap_svg(mode):
     parts.append(f'<text x="{lx + 34 + 5*(cell+gap) + 4}" y="{by}" {F} font-size="9" letter-spacing="1.5" fill="{CREAM}" fill-opacity=".6">MORE</text>')
     return f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="{total} contributions in the last year">' + ''.join(parts) + '</svg>'
 
-CHROME = 'google-chrome'
+def chrome_bin():
+    import shutil
+    env = os.environ.get('CHROME')
+    cands = ([env] if env else []) + [
+        'google-chrome-stable', 'google-chrome',
+        '/opt/google/chrome/google-chrome', 'chromium', 'chromium-browser']
+    for c in cands:
+        if not c:
+            continue
+        path = c if (os.path.isabs(c) and os.access(c, os.X_OK)) else shutil.which(c)
+        if path:
+            return path
+    raise SystemExit('headless Chrome not found (install google-chrome-stable or set CHROME)')
+
+def install_fonts():
+    """Register the vendored faces with fontconfig so Chrome matches the panel CSS."""
+    dest = pathlib.Path.home() / '.local/share/fonts/rjdotdev-profile'
+    dest.mkdir(parents=True, exist_ok=True)
+    fonts = [p for p in (SRC/'fonts').iterdir() if p.suffix.lower() in {'.ttf', '.otf', '.ttc', '.otc'}]
+    if not fonts:
+        raise SystemExit('missing font files in _src/fonts')
+    for src in fonts:
+        data = src.read_bytes(); target = dest/src.name
+        if not target.exists() or target.read_bytes() != data:
+            target.write_bytes(data)
+    subprocess.run(['fc-cache', '-f', str(dest)], check=True)
+    expect = {
+        'IBM Plex Mono': 'IBMPlexMono-Regular',
+        'IBM Plex Mono:weight=600': 'IBMPlexMono-SemiBold',
+        'Source Serif Pro:weight=700': 'SourceSerifPro-Bold',
+        'Source Serif Pro:weight=600:italic': 'SourceSerifPro-SemiboldIt',
+        'Noto Serif CJK JP:weight=600': 'NotoSerifCJKjp-SemiBold',
+    }
+    for spec, name in expect.items():
+        out = subprocess.run(['fc-match', '-f', '%{file}', spec], check=True, capture_output=True, text=True).stdout
+        if name not in out:
+            raise SystemExit(f'fontconfig resolved {spec} to {out}, expected {name}')
+
 def shoot(name, built):
     htmlsrc, w, h = built
     p = RENDER / f'{name}.html'; p.write_text(htmlsrc)
-    subprocess.run([CHROME, '--headless=new', '--no-sandbox', '--disable-gpu', '--hide-scrollbars', '--force-device-scale-factor=2',
+    subprocess.run([chrome_bin(), '--headless=new', '--no-sandbox', '--disable-gpu', '--hide-scrollbars', '--force-device-scale-factor=2',
                     '--default-background-color=00000000', f'--window-size={w},{h}', f'--screenshot={OUT/(name+".png")}', p.as_uri()],
                    check=True, capture_output=True)
     from PIL import Image
@@ -224,6 +261,9 @@ def shoot(name, built):
         im.save(f, optimize=True, compress_level=9)
     print('rendered', name)
 
+if not SVG_ONLY:
+    install_fonts()
+    print('chrome', chrome_bin())
 for mode in ['dark', 'light']:
     (OUT / f'contrib-{mode}.svg').write_text(heatmap_svg(mode))
     if SVG_ONLY: continue
