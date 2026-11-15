@@ -96,7 +96,7 @@ def page(body, w, h, mode):
 
 def hero(mode):
     W, H = 900, 520
-    rows = [('Name', 'Suryaansh A. Jha (RJ)'), ('Handle', 'github.com/rjdotdev'), ('Signal', 'x.com/shinchanBOI01'), ('Focus', 'agents · TypeScript')]
+    rows = [('Name', 'Suryaansh A. Jha (RJ)'), ('Handle', 'github.com/rjdotdev'), ('Signal', 'x.com/RJdotsh'), ('Focus', 'agents · TypeScript')]
     rows_html = ''.join(f"<div class='row'><span class='k'>{k}</span><span class='lead'></span><span class='v'>{v}</span></div>" for k, v in rows)
     return page(f"""
 <div class='frame' style='width:{W}px;height:{H}px'>

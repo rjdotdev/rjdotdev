@@ -43,5 +43,5 @@
 </p>
 
 <p align="center">
-  <sub><a href="https://github.com/rjdotdev">github.com/rjdotdev</a> &nbsp;·&nbsp; <a href="https://x.com/shinchanBOI01">x.com/shinchanBOI01</a></sub>
+  <sub><a href="https://github.com/rjdotdev">github.com/rjdotdev</a> &nbsp;·&nbsp; <a href="https://x.com/RJdotsh">x.com/RJdotsh</a></sub>
 </p>
