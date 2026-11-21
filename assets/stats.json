@@ -1,23 +1,23 @@
 {
- "total": 653,
- "active": 69,
+ "total": 802,
+ "active": 71,
  "best": {
-  "date": "2026-10-29",
-  "row": 4,
-  "col": 49,
+  "date": "2026-11-20",
+  "row": 5,
+  "col": 52,
   "level": 4,
-  "count": 46
+  "count": 87
  },
  "streak": 21,
  "repos": 23,
  "following": 2,
  "followers": 0,
  "uptime": "1Y 11M",
- "stamp": "20261120",
- "rakazo_merged": 176,
+ "stamp": "20261121",
+ "rakazo_merged": 234,
  "stars": {
-  "openclaw/openclaw": 394879,
-  "volcengine/OpenViking": 42515,
-  "elie222/rakazo": 9280
+  "openclaw/openclaw": 394946,
+  "volcengine/OpenViking": 42553,
+  "elie222/rakazo": 9359
  }
 }

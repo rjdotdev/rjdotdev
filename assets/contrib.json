@@ -423,7 +423,7 @@
 "date": "2026-01-15",
 "row": 4,
 "col": 8,
-"level": 2,
+"level": 1,
 "count": 13
 },
 {
@@ -2103,7 +2103,7 @@
 "date": "2026-09-12",
 "row": 6,
 "col": 42,
-"level": 2,
+"level": 1,
 "count": 12
 },
 {
@@ -2369,14 +2369,14 @@
 "date": "2026-10-20",
 "row": 2,
 "col": 48,
-"level": 2,
+"level": 1,
 "count": 17
 },
 {
 "date": "2026-10-21",
 "row": 3,
 "col": 48,
-"level": 2,
+"level": 1,
 "count": 13
 },
 {
@@ -2404,14 +2404,14 @@
 "date": "2026-10-25",
 "row": 0,
 "col": 49,
-"level": 2,
+"level": 1,
 "count": 15
 },
 {
 "date": "2026-10-26",
 "row": 1,
 "col": 49,
-"level": 3,
+"level": 2,
 "count": 25
 },
 {
@@ -2432,63 +2432,63 @@
 "date": "2026-10-29",
 "row": 4,
 "col": 49,
-"level": 4,
+"level": 3,
 "count": 46
 },
 {
 "date": "2026-10-30",
 "row": 5,
 "col": 49,
-"level": 2,
+"level": 1,
 "count": 18
 },
 {
 "date": "2026-10-31",
 "row": 6,
 "col": 49,
-"level": 2,
+"level": 1,
 "count": 21
 },
 {
 "date": "2026-11-01",
 "row": 0,
 "col": 50,
-"level": 2,
+"level": 1,
 "count": 17
 },
 {
 "date": "2026-11-02",
 "row": 1,
 "col": 50,
-"level": 2,
+"level": 1,
 "count": 16
 },
 {
 "date": "2026-11-03",
 "row": 2,
 "col": 50,
-"level": 2,
+"level": 1,
 "count": 15
 },
 {
 "date": "2026-11-04",
 "row": 3,
 "col": 50,
-"level": 2,
+"level": 1,
 "count": 17
 },
 {
 "date": "2026-11-05",
 "row": 4,
 "col": 50,
-"level": 3,
+"level": 2,
 "count": 31
 },
 {
 "date": "2026-11-06",
 "row": 5,
 "col": 50,
-"level": 2,
+"level": 1,
 "count": 15
 },
 {
@@ -2502,7 +2502,7 @@
 "date": "2026-11-08",
 "row": 0,
 "col": 51,
-"level": 4,
+"level": 2,
 "count": 37
 },
 {
@@ -2537,21 +2537,21 @@
 "date": "2026-11-13",
 "row": 5,
 "col": 51,
-"level": 4,
+"level": 3,
 "count": 44
 },
 {
 "date": "2026-11-14",
 "row": 6,
 "col": 51,
-"level": 2,
+"level": 1,
 "count": 16
 },
 {
 "date": "2026-11-15",
 "row": 0,
 "col": 52,
-"level": 3,
+"level": 2,
 "count": 24
 },
 {
@@ -2565,7 +2565,7 @@
 "date": "2026-11-17",
 "row": 2,
 "col": 52,
-"level": 4,
+"level": 2,
 "count": 34
 },
 {
@@ -2586,7 +2586,14 @@
 "date": "2026-11-20",
 "row": 5,
 "col": 52,
-"level": 0,
-"count": 0
+"level": 4,
+"count": 87
+},
+{
+"date": "2026-11-21",
+"row": 6,
+"col": 52,
+"level": 3,
+"count": 62
 }
 ]
