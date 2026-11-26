@@ -13,11 +13,11 @@
  "following": 2,
  "followers": 2,
  "uptime": "1Y 11M",
- "stamp": "20261125",
- "rakazo_merged": 257,
+ "stamp": "20261126",
+ "rakazo_merged": 259,
  "stars": {
-  "openclaw/openclaw": 395182,
-  "volcengine/OpenViking": 42753,
-  "elie222/rakazo": 9757
+  "openclaw/openclaw": 395269,
+  "volcengine/OpenViking": 42849,
+  "elie222/rakazo": 9831
  }
 }
